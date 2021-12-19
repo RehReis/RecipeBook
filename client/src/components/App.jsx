@@ -1,5 +1,6 @@
 import React from 'react';
-import RecipeList from './RecipeList.jsx'
+import RecipeList from './RecipeList.jsx';
+import AddRecipe from './AddRecipe.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,10 +14,19 @@ class App extends React.Component {
     }
   }
 
+  addRecipe(recipeInfo) {
+    let updatedRecipeList = this.state.recipes.slice();
+    updatedRecipeList.push(recipeInfo);
+    this.setState({
+      recipes: updatedRecipeList
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>Recipes</h1>
+        <AddRecipe addRecipe={this.addRecipe.bind(this)}/>
         <RecipeList recipes={this.state.recipes}/>
       </div>
     )
