@@ -1,10 +1,17 @@
 import React from 'react';
 import Recipe from './Recipe.jsx';
 
-function RecipeList({recipes}) {
+function RecipeList({recipes, searchedRecipe}) {
   return (
     <div>
-      {recipes.map((recipe, index) => {
+      {(searchedRecipe ?
+        recipes.filter(recipe => {
+          let currentRecipe = recipe.name.toLowerCase();
+          return currentRecipe.includes(searchedRecipe);
+        })
+        :
+        recipes)
+        .map((recipe, index) => {
         return <Recipe key={index} recipe={recipe}/>
       })
       }

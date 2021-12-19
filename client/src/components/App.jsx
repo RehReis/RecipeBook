@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeList from './RecipeList.jsx';
 import AddRecipe from './AddRecipe.jsx';
+import SearchRecipes from './SearchRecipes.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class App extends React.Component {
         {name: 'Banana Bread', ingredients: 'bananas, flour, eggs, milk', portion: 8},
         {name: 'Banana Pancake', ingredients: 'bananas, flour, eggs', portion: 4},
         {name: 'Rice Bread', ingredients: 'rice, yorgut, eggs, milk', portion: 8}
-      ]
+      ],
+      searchedRecipe: ''
     }
   }
 
@@ -22,12 +24,20 @@ class App extends React.Component {
     })
   }
 
+  searchRecipes(recipeName) {
+    this.setState({
+      searchedRecipe: recipeName.toLowerCase()
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>Recipes</h1>
         <AddRecipe addRecipe={this.addRecipe.bind(this)}/>
-        <RecipeList recipes={this.state.recipes}/>
+        <br></br>
+        <SearchRecipes searchRecipes={this.searchRecipes.bind(this)}/>
+        <RecipeList recipes={this.state.recipes} searchedRecipe={this.state.searchedRecipe}/>
       </div>
     )
   }
