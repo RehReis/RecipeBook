@@ -1,0 +1,20 @@
+{
+  "name": "recipebook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RehReis/RecipeBook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RehReis/RecipeBook/issues"
+  },
+  "homepage": "https://github.com/RehReis/RecipeBook#readme",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
