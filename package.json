@@ -1,7 +1,7 @@
 {
   "name": "recipebook",
   "version": "1.0.0",
-  "description": "",
+  "description": "View all recipes and add new ones",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -13,8 +13,19 @@
     "url": "https://github.com/RehReis/RecipeBook/issues"
   },
   "homepage": "https://github.com/RehReis/RecipeBook#readme",
-
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "react-dev": "webpack --watch"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "babel-loader": "^8.2.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.9.1"
   }
 }
