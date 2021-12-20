@@ -2,6 +2,7 @@ import React from 'react';
 import RecipeList from './RecipeList.jsx';
 import AddRecipe from './AddRecipe.jsx';
 import SearchRecipes from './SearchRecipes.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,11 +17,29 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.fetchRecipes();
+  }
+
+  fetchRecipes() {
+    axios.get('/recipes')
+    .then(({data}) => {
+      this.setState({
+        recipes: data
+      })
+    })
+    .catch(err => {
+      alert('Erro occurred', err);
+    })
+  }
+
   addRecipe(recipeInfo) {
-    let updatedRecipeList = this.state.recipes.slice();
-    updatedRecipeList.push(recipeInfo);
-    this.setState({
-      recipes: updatedRecipeList
+    axios.post('/recipes', recipeInfo)
+    .then(result => {
+      this.fetchRecipes();
+    })
+    .catch(err => {
+      alert('Err occurred', err)
     })
   }
 

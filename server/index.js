@@ -10,7 +10,10 @@ app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
 })
 
-app.get('/recipes', (req, res) {
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.get('/recipes', (req, res) => {
   getData()
   .then(result => {
     res.status(200).json(result);
@@ -21,8 +24,8 @@ app.get('/recipes', (req, res) {
 });
 
 
-app.post('/recipes', (req, res) {
-  saveData(req.body.recipe)
+app.post('/recipes', (req, res) => {
+  saveData(req.body)
   .then(result => {
     res.sendStatus(201);
   })

@@ -1,5 +1,5 @@
 const db = require('mysql2');
-const dbConnection = db.CreateConnection({
+const dbConnection = db.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
@@ -9,7 +9,7 @@ const dbConnection = db.CreateConnection({
 dbConnection.connect();
 
 let getData = () => {
-  return new Promise((reject, resolve) => {
+  return new Promise((resolve, reject) => {
     dbConnection.query('SELECT * FROM recipes', (err, result) => {
       if (err) {
         reject(err);
@@ -21,7 +21,7 @@ let getData = () => {
 };
 
 let saveData = ({name, ingredients, portion}) => {
-  return new Promise((reject, resolve) => {
+  return new Promise((resolve, reject) => {
     dbConnection.query('INSERT INTO recipes (name, ingredients, portion) VALUES (?, ?, ?)', [name, ingredients, portion], (err, result) => {
       if (err) {
         reject(err);
