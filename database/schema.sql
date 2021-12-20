@@ -1,0 +1,11 @@
+CREATE DATABASE RecipesDB;
+
+USE RecipesDB;
+
+CREATE TABLE recipes (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  name VARCHAR(30) NOT NULL,
+  ingredients VARCHAR(200),
+  portion INTEGER,
+  PRIMARY KEY (id)
+)
